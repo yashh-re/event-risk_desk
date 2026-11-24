@@ -1,6 +1,6 @@
-# Event Risk Desk
+# Blindspot
 
-**Pricing hedges for the risks no one else covers.**
+**The risks no one else is watching: pricing hedges for events insurance won't cover.**
 
 Some of the biggest risks a company faces don't fit insurance or futures: a snowstorm that shuts New York's airports, a calm year for a wind farm, a superhero sequel that opens soft. Event contracts, which pay $1 if an event happens and $0 if it doesn't, can hedge them.
 
@@ -40,4 +40,4 @@ python memo_agent.py DC             # writes memos/DC.md
 These are sample memos built from public data, not trading advice or offers to trade. Probabilities are estimates from small samples, and a real contract would need a precisely defined, measurable trigger.
 
 ---
-Built by Yashna, Finance and Informatics, Indiana University.
+Built by Yashna | Finance and Informatics @ Indiana University.
