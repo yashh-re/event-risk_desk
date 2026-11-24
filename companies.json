@@ -18,7 +18,66 @@
       "Probability 50%: 10 winters of federal BTS flight data (2016-17 to 2025-26); 5 winters had at least one shutdown day. March 2020 excluded (COVID, not weather).",
       "Limits: some revenue comes back through rebooking and higher fares on remaining seats; storm costs (de-icing, crews, hotels) push the other way.",
       "Tradeoff: a 50% event makes the hedge pricey; covering only 2+ day storms (10%) is cheaper."
-    ]
+    ],
+    "history": {
+      "title": "The data behind the 50%",
+      "subtitle": "Days when over 50% of JetBlue's New York flights were cancelled for weather, by winter",
+      "measure": "Shutdown days",
+      "rows": [
+        {
+          "period": "2016-17",
+          "value": 2,
+          "detail": "Feb 9, 2017 (84% cancelled); Mar 14, 2017, Winter Storm Stella (81%)"
+        },
+        {
+          "period": "2017-18",
+          "value": 3,
+          "detail": "Jan 4, 2018 (86%); Mar 7 (75%); Mar 21 (60%)"
+        },
+        {
+          "period": "2018-19",
+          "value": 0,
+          "detail": "No shutdown days"
+        },
+        {
+          "period": "2019-20",
+          "value": 0,
+          "detail": "No shutdown days (March 2020 COVID cuts excluded)"
+        },
+        {
+          "period": "2020-21",
+          "value": 1,
+          "detail": "Feb 1, 2021 (98%)"
+        },
+        {
+          "period": "2021-22",
+          "value": 1,
+          "detail": "Jan 29, 2022 (80%)"
+        },
+        {
+          "period": "2022-23",
+          "value": 0,
+          "detail": "No shutdown days"
+        },
+        {
+          "period": "2023-24",
+          "value": 0,
+          "detail": "No shutdown days"
+        },
+        {
+          "period": "2024-25",
+          "value": 0,
+          "detail": "No shutdown days"
+        },
+        {
+          "period": "2025-26",
+          "value": 5,
+          "detail": "Jan 25-26, 2026 (89%); Feb 22-24, 2026, Winter Storm Hernando (100%)"
+        }
+      ],
+      "takeaway": "5 of 10 winters had at least one shutdown day. Last winter had five, including Winter Storm Hernando.",
+      "source": "Source: my analysis of U.S. Bureau of Transportation Statistics on-time data, Dec-Mar, JetBlue flights to or from JFK, LGA, EWR, HPN and ISP (jfk_storms.py)."
+    }
   },
   "CoreWeave": {
     "client": "CoreWeave (CRWV)",

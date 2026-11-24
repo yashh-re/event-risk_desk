@@ -189,6 +189,38 @@ chart = (
 st.altair_chart(chart)
 st.caption("A hedge turns an uncertain large loss into a known, smaller cost.")
 
+# ---------------- The data behind the probability (if the company has a history) ----------------
+hist = c.get("history")
+if hist:
+    st.markdown(f"### {hist['title']}")
+    st.markdown(f'<div class="hero-event" style="margin-top:-8px;margin-bottom:10px;">{hist["subtitle"]}</div>',
+                unsafe_allow_html=True)
+    hdf = pd.DataFrame(hist["rows"])
+    measure = hist["measure"]
+    hdf = hdf.rename(columns={"period": "Winter", "value": measure, "detail": "What happened"})
+
+    base = alt.Chart(hdf).encode(x=alt.X("Winter:N", title=None, sort=None, axis=alt.Axis(labelAngle=0)))
+    hbars = base.mark_bar(color=HEDGED, cornerRadiusTopLeft=4, cornerRadiusTopRight=4, size=34).encode(
+        y=alt.Y(f"{measure}:Q", title=measure, axis=alt.Axis(tickMinStep=1)),
+        tooltip=["Winter", alt.Tooltip(f"{measure}:Q"), "What happened"],
+    )
+    # Label only the winters that had shutdown days
+    hlabels = base.transform_filter(f"datum['{measure}'] > 0").mark_text(
+        dy=-8, fontSize=12, color="#e8eefc").encode(y=f"{measure}:Q", text=f"{measure}:Q")
+    hchart = (
+        (hbars + hlabels)
+        .properties(height=240)
+        .configure(background="transparent")
+        .configure_view(stroke=None)
+        .configure_axis(labelColor="#c9d4ec", titleColor="#c9d4ec", gridColor="rgba(255,255,255,0.08)",
+                        domainColor="rgba(255,255,255,0.2)")
+    )
+    st.altair_chart(hchart, use_container_width=True)
+    st.markdown(f"**{hist['takeaway']}**")
+    st.caption(hist["source"] + " Hover a bar to see the storm dates.")
+    with st.expander("Show the data as a table"):
+        st.dataframe(hdf, hide_index=True, use_container_width=True)
+
 # ---------------- The memo and the research ----------------
 tab_memo, tab_why = st.tabs(["Exposure memo", "Research & reasoning"])
 with tab_memo:
