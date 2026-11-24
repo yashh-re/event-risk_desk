@@ -57,7 +57,7 @@ html, body, [class*="css"], .stMarkdown, p, li, label {{ font-family: 'Inter', s
 }}
 
 /* Glass cards */
-.glass, [data-testid="stMetric"], [data-testid="stVegaLiteChart"], [data-testid="stTabs"] {{
+.glass, .st-key-about, [data-testid="stMetric"], [data-testid="stVegaLiteChart"], [data-testid="stTabs"] {{
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -67,6 +67,7 @@ html, body, [class*="css"], .stMarkdown, p, li, label {{ font-family: 'Inter', s
 [data-testid="stMetric"] {{ padding: 16px 18px; }}
 [data-testid="stVegaLiteChart"] {{ padding: 18px; box-sizing: border-box; max-width: 100%; overflow: hidden; }}
 [data-testid="stTabs"] {{ padding: 8px 22px 18px; }}
+.st-key-about {{ padding: 28px 36px; max-width: 900px; }}
 
 [data-testid="stMetricLabel"] p {{ text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: {MUTED}; }}
 [data-testid="stMetricValue"] {{ font-weight: 700; font-size: 2rem; }}
@@ -114,6 +115,17 @@ names = list(companies)
 # ---------------- Sidebar ----------------
 st.sidebar.markdown('<div class="brand">Blindspot</div>', unsafe_allow_html=True)
 st.sidebar.markdown('<div class="tagline">The risks no one else is watching.</div>', unsafe_allow_html=True)
+page = st.sidebar.radio("Page", ["Memos", "About"], horizontal=True, label_visibility="collapsed")
+
+if page == "About":
+    with st.container(key="about"):
+        if os.path.exists("about.md"):
+            with open("about.md", encoding="utf-8") as f:
+                st.markdown(f.read())
+        else:
+            st.info("Add an about.md file to fill this page.")
+    st.stop()
+
 st.sidebar.markdown('<div class="label">Companies</div>', unsafe_allow_html=True)
 name = st.sidebar.radio(
     "Companies", names,
