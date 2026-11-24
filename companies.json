@@ -1,0 +1,87 @@
+{
+  "JetBlue": {
+    "client": "JetBlue Airways (JBLU)",
+    "sector": "Aviation",
+    "event": "Weather shutdown day in New York: over 50% of JetBlue's New York flights cancelled on any day this winter",
+    "revenue": 9062000000,
+    "revenue_at_risk": 12413699,
+    "probability": 0.5,
+    "why_picked": "JetBlue has been on my radar because of its recent organizational changes. It sits between a budget carrier and a major US airline, and as a mid-size airline concentrated in the Northeast, with about half its flights touching New York, it's hit harder by winter storms than bigger, more spread-out competitors.",
+    "key_facts": [
+      "About half of JetBlue's daily flights start or end at a New York-area airport (FY2025 10-K).",
+      "Operating loss of $368M in 2025; load factor 82.4%, so little room to rebook stranded passengers.",
+      "Winter Storm Hernando, Feb 22-24, 2026: JetBlue cancelled up to 100% of its New York flights (BTS data).",
+      "Winter 2025-26 had two separate shutdowns of 2+ days (Jan 25-26 and Feb 22-24)."
+    ],
+    "reasoning": [
+      "Revenue hit: $9,062M revenue x 50% New York share / 365 = one shutdown day ($12.4M). Cross-checked with passengers x average fare ($11.4M).",
+      "Probability 50%: 10 winters of federal BTS flight data (2016-17 to 2025-26); 5 winters had at least one shutdown day. March 2020 excluded (COVID, not weather).",
+      "Limits: some revenue comes back through rebooking and higher fares on remaining seats; storm costs (de-icing, crews, hotels) push the other way.",
+      "Tradeoff: a 50% event makes the hedge pricey; covering only 2+ day storms (10%) is cheaper."
+    ]
+  },
+  "CoreWeave": {
+    "client": "CoreWeave (CRWV)",
+    "sector": "AI compute",
+    "event": "H100 rental price index falls 25% or more over the next 12 months",
+    "revenue": 5131000000,
+    "revenue_at_risk": 25655000,
+    "probability": 0.3,
+    "why_picked": "Chose CoreWeave because it's an interesting company with secure revenue streams, which almost pushes it aside as a hedge candidate. But I wanted to see how it would turn out after looking at the other sources, and it turns out 98% of its revenue is locked into contracts, so the real question is what's left exposed.",
+    "key_facts": [
+      "98% of 2025 revenue came from take-or-pay committed contracts, about 5-year average duration (FY2025 10-K).",
+      "$60.7B of remaining performance obligations; Microsoft was 67% of 2025 revenue.",
+      "Interest expense of $1.2B in 2025; debt partly backed by GPUs.",
+      "H100 rental index: about $8/hr in early 2024, about $2.00 in Dec 2025, about $3.10 by Nov 2026."
+    ],
+    "reasoning": [
+      "Exposure: only the ~2% on-demand slice (~$103M) moves with market GPU prices right away.",
+      "Revenue hit: ~$103M x a 25% price drop = $25.7M.",
+      "Probability 30%: history says ~65%, but those drops came from post-shortage normalization; prices have risen ~55% since Dec 2025 ($2.00 to ~$3.10) and capacity is sold out.",
+      "Bigger risks than price: customer concentration (Microsoft 67%) and GPU-backed debt."
+    ]
+  },
+  "Clearway": {
+    "client": "Clearway Energy (CWEN)",
+    "sector": "Green energy",
+    "event": "Low-wind year: wind output falls 5% below normal",
+    "revenue": 1429000000,
+    "revenue_at_risk": 30326695,
+    "probability": 0.2,
+    "why_picked": "Green economics is a key interest of mine, so I decided to go with a semi-popular player in the clean energy space with big reach in the US. Clearway also has thin margins and a heavy reliance on wind energy, so one calm year would majorly impact its profits.",
+    "key_facts": [
+      "Wind is Clearway's largest technology: 3,708 net MW, about 38% of capacity (FY2025 10-K).",
+      "Operating income was only $160M in 2025 vs $387M of interest expense.",
+      "2023: lower-than-average wind production cut revenue by $43M (FY2023 10-K).",
+      "2021: $50M of settlements when wind farms couldn't deliver during the Texas freeze."
+    ],
+    "reasoning": [
+      "Revenue hit: 10.5M wind MWh x ~$57.61/MWh x 5% shortfall = ~$30M. The price blends wind, solar and storage.",
+      "Why 5%: 2023 wind was ~4-5% below average and cost $43M, so 5% is realistic and possibly conservative.",
+      "Probability 20%: 1 low-wind year out of 5 (2021-2025); small sample.",
+      "Contracts lock in price but not volume: if the wind doesn't blow, Clearway isn't paid."
+    ]
+  },
+  "DC": {
+    "client": "Paramount Skydance (Warner Bros. / DC Studios)",
+    "sector": "Film",
+    "event": "Man of Tomorrow (July 9, 2027) opens below $100M domestic",
+    "revenue": 12619000000,
+    "revenue_at_risk": 98992000,
+    "probability": 0.25,
+    "why_picked": "Wanted to look at unstable markets, and film is one of them, with high volatility and a lot of unpredictable factors. So I chose a big studio that sits between blockbuster franchises and highly volatile box office conditions, which also ties into my Film Production minor.",
+    "key_facts": [
+      "Paramount Skydance completed its ~$110B acquisition of Warner Bros. Discovery on Oct 6, 2026.",
+      "Superman (2025) opened to $125M domestic, $354M domestic total, $619M worldwide.",
+      "Supergirl (June 2026) opened to $37M against ~$50M+ tracking.",
+      "Warner Bros. Studios segment revenue was $12.6B in 2025 (FY2025 10-K)."
+    ],
+    "reasoning": [
+      "Revenue hit: an $85M opening instead of $125M carries through the run (2.83x domestic, 1.75x worldwide) = ~$198M less box office; studio keeps ~50% = ~$99M.",
+      "Probability 25%: 5 of 10 superhero comps opened under $100M, but all 3 sequels to hits cleared $100M; adjusted up for DC brand risk after Supergirl.",
+      "Signal: every comp tracking above $100M opened above it, so buy the hedge before tracking slips (The Marvels fell from $75-80M to $46M).",
+      "Limits: excludes streaming and licensing, which also follow the opening."
+    ],
+    "revenue_label": "Warner Bros. Studios segment revenue (2025; not all of Paramount)"
+  }
+}
