@@ -65,7 +65,7 @@ html, body, [class*="css"], .stMarkdown, p, li, label {{ font-family: 'Inter', s
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }}
 [data-testid="stMetric"] {{ padding: 16px 18px; }}
-[data-testid="stVegaLiteChart"] {{ padding: 18px; }}
+[data-testid="stVegaLiteChart"] {{ padding: 18px; box-sizing: border-box; max-width: 100%; overflow: hidden; }}
 [data-testid="stTabs"] {{ padding: 8px 22px 18px; }}
 
 [data-testid="stMetricLabel"] p {{ text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: {MUTED}; }}
@@ -93,7 +93,8 @@ footer {{ visibility: hidden; }}
 
 
 @st.cache_data
-def load_companies():
+def load_companies(modified_time):
+    # The file's modified time is part of the cache key, so edits to companies.json show up right away
     with open("companies.json", encoding="utf-8") as f:
         return json.load(f)
 
@@ -107,7 +108,7 @@ def load_memo(name):
     return None
 
 
-companies = load_companies()
+companies = load_companies(os.path.getmtime("companies.json"))
 names = list(companies)
 
 # ---------------- Sidebar ----------------
@@ -201,7 +202,8 @@ if hist:
 
     base = alt.Chart(hdf).encode(x=alt.X("Winter:N", title=None, sort=None, axis=alt.Axis(labelAngle=0)))
     hbars = base.mark_bar(color=HEDGED, cornerRadiusTopLeft=4, cornerRadiusTopRight=4, size=34).encode(
-        y=alt.Y(f"{measure}:Q", title=measure, axis=alt.Axis(tickMinStep=1)),
+        y=alt.Y(f"{measure}:Q", title=measure, axis=alt.Axis(tickMinStep=1),
+                scale=alt.Scale(domainMax=int(hdf[measure].max()) + 1)),
         tooltip=["Winter", alt.Tooltip(f"{measure}:Q"), "What happened"],
     )
     # Label only the winters that had shutdown days
@@ -209,17 +211,17 @@ if hist:
         dy=-8, fontSize=12, color="#e8eefc").encode(y=f"{measure}:Q", text=f"{measure}:Q")
     hchart = (
         (hbars + hlabels)
-        .properties(height=240)
+        .properties(height=240, width=780)
         .configure(background="transparent")
         .configure_view(stroke=None)
         .configure_axis(labelColor="#c9d4ec", titleColor="#c9d4ec", gridColor="rgba(255,255,255,0.08)",
                         domainColor="rgba(255,255,255,0.2)")
     )
-    st.altair_chart(hchart, use_container_width=True)
+    st.altair_chart(hchart, width="content")
     st.markdown(f"**{hist['takeaway']}**")
     st.caption(hist["source"] + " Hover a bar to see the storm dates.")
     with st.expander("Show the data as a table"):
-        st.dataframe(hdf, hide_index=True, use_container_width=True)
+        st.dataframe(hdf, hide_index=True, width="stretch")
 
 # ---------------- The memo and the research ----------------
 tab_memo, tab_why = st.tabs(["Exposure memo", "Research & reasoning"])
